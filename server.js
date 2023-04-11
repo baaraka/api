@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import userRoute from "./routes/user.route.js";
 
 const app = express();
 dotenv.config();
@@ -12,6 +13,8 @@ try {
 } catch (error) {
   console.log(error);
 }
+
+app.use("/api/users", userRoute);
 
 app.listen(5000, () => {
   console.log("server is listening and here we go!..");
