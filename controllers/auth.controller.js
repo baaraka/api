@@ -3,7 +3,11 @@ import bcrypt from "bcrypt";
 
 export const register = async (req, res) => {
   try {
-    const newUser = new User(req.body);
+    const hash = bcrypt.hashSync(req.body.password, 5);
+    const newUser = new User({
+      ...req.body,
+      password: hash,
+    });
     await newUser.save();
     res.status(200).send("New user has been registered");
   } catch (error) {
