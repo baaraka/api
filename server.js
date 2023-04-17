@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import userRoute from "./routes/user.route.js";
 import authRoute from "./routes/auth.route.js";
+import cors from "cors";
 
 const app = express();
 dotenv.config();
@@ -16,6 +17,7 @@ try {
   console.log(error);
 }
 //middleware
+app.use(cors({ origin: "https://localhost:3000", credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 
