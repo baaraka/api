@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import userRoute from "./routes/user.route.js";
 import authRoute from "./routes/auth.route.js";
+import gigRoute from "./routes/gig.route.js";
 import cors from "cors";
 
 const app = express();
@@ -23,6 +24,7 @@ app.use(cookieParser());
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
+app.use("/api/gigs", gigRoute);
 
 app.listen(5000, () => {
   console.log("server is listening and here we go!..");
